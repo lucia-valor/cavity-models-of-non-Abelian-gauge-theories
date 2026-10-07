@@ -1,0 +1,5 @@
+# Versions the figures were produced with. Also needs Python >= 3.11 and a LaTeX installation (text.usetex).
+numpy==1.26.4
+scipy==1.11.4
+matplotlib==3.8.0
+jupyterlab==4.0.11
