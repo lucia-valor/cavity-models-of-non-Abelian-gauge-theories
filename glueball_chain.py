@@ -113,4 +113,8 @@ def G2_r(state, basis):
     p = np.abs(state)**2 * basis[:, 0]   # probability of each configuration, times K_0
     G2 = p @ basis                        # <K_0 K_x>
     G2[0] -= p.sum()                      # remove the self-correlation at x = 0
-    return np.array([G2[0]] + [G2[r] + G2[-r] for r in range(1, len(G2))])
+    M = len(G2)
+    out = [G2[0]] + [G2[r] + G2[-r] for r in range(1, (M + 1)//2)]
+    if M % 2 == 0:
+        out.append(G2[M//2])   # R = M/2 is its own mirror site: count it once
+    return np.array(out)       # R = 0, ..., M//2
